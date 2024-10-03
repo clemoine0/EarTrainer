@@ -45,7 +45,7 @@ public class EarTrainer {
         System.out.println("This program will help you practice your relative pitch.");
         System.out.println("When you start, two notes will be played\nand you will be prompted to enter the interval between them.");
         System.out.println("In ascending order, this program will expect intervals like so:");
-        System.out.println("unison, min2, maj2, min3, maj3, p4, tritone,\np5, min6, maj6, min7, maj7, octave/p8");
+        System.out.println("unison, min2, maj2, min3, maj3, p4, tritone,\np5, min6, maj6, min7, maj7, octave");
         System.out.println("You may enter \"replay\" to hear an interval again");
     }
     
@@ -73,11 +73,13 @@ public class EarTrainer {
                     if (intervalNames[interval[2]].equals(guess)) { // if guess is correct
                         System.out.println("Correct!");
                         score[0]++;
+                    } else {
+                        System.out.println("Incorrect, "+intervalNames[interval[2]]+"!");
                     }
                     
                     break;
                 } else {
-                    System.out.println("Invalid guess");
+                    System.out.println("Invalid guess!");
                 }
             } 
         }
@@ -99,7 +101,7 @@ public class EarTrainer {
     } 
 
     static void quit(int[] scores) {
-        System.out.println("You got " + scores[0] + " correct, out of " + scores[1] + "!");
+        System.out.println("You got " + scores[0] + " correct out of " + scores[1] + "! ("+(100*scores[0]/scores[1])+"%)");
     }
     
     static void playNotes(int[] interval) throws UnsupportedAudioFileException, LineUnavailableException, IOException, InterruptedException {
